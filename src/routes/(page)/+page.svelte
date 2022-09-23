@@ -39,7 +39,6 @@
 		left: 0;
 		display: flex;
 		flex-flow: column nowrap;
-		width: calc(100vw / 4);
 		border-right: solid 1px var(--white-50);
 		color: var(--black);
 
