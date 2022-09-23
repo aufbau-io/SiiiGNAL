@@ -25,7 +25,7 @@
 
 	function init() {
 		camera = new THREE.PerspectiveCamera(20, width / height, 1, 10000);
-		camera.position.z = 1200;
+		camera.position.z = 450;
 
 		scene = new THREE.Scene();
 		scene.background = new THREE.Color(0xf4f4f4);
@@ -48,8 +48,7 @@
 
 		scene.add(sphere, sphere_2);
 
-		scene.rotation.z += Math.PI / 2;
-		scene.rotation.y += Math.PI;
+		scene.rotation.x += Math.PI / 2;
 
 		// -------------------------------------------------------------------------
 
