@@ -9,6 +9,7 @@
 </script>
 
 <main>
+	<svelte:component this={Geometry} />
 	<div class="sidebar">
 		<h4>SiiiGNAL</h4>
 		<h6>version: 0.0.1</h6>
@@ -22,7 +23,6 @@
 		<br />
 		<h6>START GAME</h6>
 	</div>
-	<svelte:component this={Geometry} />
 </main>
 
 <style>
@@ -34,10 +34,14 @@
 	}
 
 	.sidebar {
+		position: absolute;
+		top: 0;
+		left: 0;
 		display: flex;
 		flex-flow: column nowrap;
 		width: calc(100vw / 4);
 		border-right: solid 1px var(--white-50);
+		color: var(--black);
 
 		padding: 20px;
 	}

@@ -1,18 +1,16 @@
 <script>
 	import { onMount } from 'svelte';
 	import * as THREE from 'three';
-	import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 	let group;
 
 	let container;
 
 	let camera, scene, renderer;
-	let controls;
 
 	let mouseX = 0,
 		mouseY = 0;
 
-	let width = (window.innerWidth / 4) * 3;
+	let width = window.innerWidth;
 	let height = window.innerHeight;
 
 	let sphere, sphere_2;
@@ -37,12 +35,12 @@
 		// -------------------------------------------------------------------------
 
 		sphere = new THREE.Mesh(
-			new THREE.SphereGeometry(170, 124, 62),
+			new THREE.SphereGeometry(170, 240, 120),
 			new THREE.MeshBasicMaterial({ color: 0xf4f4f4, wireframe: false })
 		);
 
 		sphere_2 = new THREE.Mesh(
-			new THREE.SphereGeometry(171, 124, 62),
+			new THREE.SphereGeometry(171, 480, 240),
 			new THREE.MeshBasicMaterial({ color: 0x2b2b2b, wireframe: true })
 		);
 
@@ -60,8 +58,6 @@
 			container.appendChild(renderer.domElement);
 		});
 
-		controls = new OrbitControls(camera, renderer.domElement);
-
 		document.addEventListener('mousemove', onDocumentMouseMove);
 
 		//
@@ -70,7 +66,7 @@
 	}
 
 	function onWindowResize() {
-		let width = (window.innerWidth / 4) * 3;
+		let width = window.innerWidth;
 		let height = window.innerHeight;
 
 		windowHalfX = width / 2;
@@ -83,17 +79,21 @@
 	}
 
 	function onDocumentMouseMove(event) {
-		mouseX = event.clientX - windowHalfX;
-		mouseY = event.clientY - windowHalfY;
+		mouseX = event.clientX;
+		mouseY = event.clientY;
 	}
 
 	function animate() {
 		requestAnimationFrame(animate);
-		controls.update();
 		render();
 	}
 
 	function render() {
+		camera.position.z = (mouseY + mouseX) * 0.1;
+		scene.rotation.y = mouseX / 100000 + scene.rotation.y;
+
+		camera.lookAt(scene.position);
+
 		renderer.render(scene, camera);
 	}
 </script>
