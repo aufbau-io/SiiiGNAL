@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>IOTA</title>
+	<title>SiiiGNAL</title>
 </svelte:head>
 
 <!--Header /-->
