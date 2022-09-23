@@ -13,7 +13,7 @@
 		mouseY = 0;
 
 	let width = (window.innerWidth / 4) * 3;
-	let height = window.innerHeight - 51;
+	let height = window.innerHeight;
 
 	let sphere, sphere_2;
 
@@ -71,7 +71,7 @@
 
 	function onWindowResize() {
 		let width = (window.innerWidth / 4) * 3;
-		let height = window.innerHeight - 51;
+		let height = window.innerHeight;
 
 		windowHalfX = width / 2;
 		windowHalfY = height / 2;

@@ -10,11 +10,17 @@
 
 <main>
 	<div class="sidebar">
-		<p>SiiiGNAL: Topographical Connectivity</p>
-		<p>version: 0.0.1</p>
+		<h4>SiiiGNAL</h4>
+		<h6>version: 0.0.1</h6>
 		<br />
-		<p>globe view</p>
-		<p>field</p>
+		<h6>globe view</h6>
+		<h6>field view</h6>
+		<br />
+		<h6>rivers: <b>on</b> / off</h6>
+		<h6>connections: <b>on</b> / off</h6>
+		<br />
+		<h6>instructions</h6>
+		<h6><b>start game</b></h6>
 	</div>
 	<svelte:component this={Geometry} />
 </main>
@@ -22,7 +28,7 @@
 <style>
 	main {
 		position: relative;
-		height: calc(100vh - 51px);
+		height: 100vh;
 		overflow: hidden;
 		display: flex;
 	}
