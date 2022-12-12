@@ -10,7 +10,7 @@
 
 <main>
 	<svelte:component this={Geometry} />
-	<div class="sidebar">
+	<!-- <div class="sidebar">
 		<h4>SiiiGNAL</h4>
 		<h6>version: 0.0.1</h6>
 		<h6>instructions</h6>
@@ -22,7 +22,7 @@
 		<h6>connections: [ <b>on</b> / off ]</h6>
 		<br />
 		<h6>START GAME</h6>
-	</div>
+	</div> -->
 </main>
 
 <style>
