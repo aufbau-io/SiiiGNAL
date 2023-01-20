@@ -18,31 +18,41 @@
 	let windowHalfX = width / 2;
 	let windowHalfY = height / 2;
 
+	const clock = new THREE.Clock();
+	let previousTime,
+		elapsedTime,
+		deltaTime = 0;
+
 	init();
 	animate();
 
 	function init() {
-		camera = new THREE.PerspectiveCamera(20, width / height, 1, 10000);
-		camera.position.z = 450;
+		camera = new THREE.PerspectiveCamera(20, width / height, 1, 800);
+		camera.position.z = 400;
 
 		scene = new THREE.Scene();
-		scene.background = new THREE.Color(0xf4f4f4);
+		scene.background = new THREE.Color(0x171717);
 
-		const light = new THREE.DirectionalLight(0xf4f4f4);
-		light.position.set(0, 1, 1);
-		scene.add(light);
+		// const light = new THREE.DirectionalLight(0xf4f4f4);
+		// light.position.set(0, 1, 1);
+		// scene.add(light);
 
 		// -------------------------------------------------------------------------
 
 		sphere = new THREE.Mesh(
-			new THREE.SphereGeometry(170, 240, 120),
-			new THREE.MeshBasicMaterial({ color: 0xf4f4f4, wireframe: false })
+			new THREE.SphereGeometry(170, 960),
+			new THREE.MeshBasicMaterial({ color: 0xb0b0b0, wireframe: true })
 		);
 
 		sphere_2 = new THREE.Mesh(
-			new THREE.SphereGeometry(171, 480, 240),
-			new THREE.MeshBasicMaterial({ color: 0x2b2b2b, wireframe: true })
+			new THREE.SphereGeometry(170, 960),
+			new THREE.MeshBasicMaterial({ color: 0xb0b0b0, wireframe: true })
 		);
+
+		// sphere_3 = new THREE.Mesh(
+		// 	new THREE.IcosahedronGeometry(160, 240),
+		// 	new THREE.MeshBasicMaterial({ color: 0xb0b0b0, wireframe: true })
+		// );
 
 		scene.add(sphere, sphere_2);
 
@@ -89,8 +99,14 @@
 	}
 
 	function render() {
-		camera.position.z = (mouseY + mouseX) * 0.1;
-		scene.rotation.y = mouseX / 100000 + scene.rotation.y;
+		const elapsedTime = clock.getElapsedTime();
+		const deltaTime = elapsedTime - previousTime;
+		previousTime = elapsedTime;
+
+		scene.rotation.z = Math.sin(elapsedTime / 1000);
+		// scene.rotation.y = mouseX / 10000 + scene.rotation.y;
+
+		// scene.rotation.x = mouseX / 10000 + scene.rotation.x;
 
 		camera.lookAt(scene.position);
 
